@@ -399,11 +399,28 @@ tmux_conf_urlscan_options="--compact --dedupe"
 
 # this is the place to override or undo settings
 
-# increase history size
-#set -g history-limit 10000
+# turn on extended keys
+set -s extended-keys on
 
 # start with mouse mode enabled
-#set -g mouse on
+set -g mouse on
+
+# start with enabled clipboard 
+set -g set-clipboard on
+
+# allow sequence pass-through
+set -option -g allow-passthrough on
+
+# define terminal features
+set -as terminal-features 'tmux-256color:extkeys'
+
+# increase history size
+set -g history-limit 10000
+
+# START: next/prev window keys
+bind -n C-S-Left previous-window
+bind -n C-S-Right next-window
+# END: next/prev window keys
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
